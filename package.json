@@ -1,0 +1,62 @@
+{
+  "name": "component-system",
+  "version": "0.0.1",
+  "description": "Component System",
+  "main": "lib-es6/index.js",
+  "scripts": {
+    "clean": "shx rm -rf _bundles lib lib-es6",
+    "build-commonjs": "tsc",
+    "build-es6": "tsc -m es6 --outDir lib-es6",
+    "build-umd": "webpack --mode production",
+    "build:watch": "tsc -w",
+    "build": "npm run clean && npm run build-commonjs && npm run build-es6 && npm run build-umd",
+    "start": "webpack-dev-server --open --mode development --config webpack.config.example.js",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "lint": "tslint \"src/**/*.ts\"",
+    "doc": "typedoc --out doc src --name component-system --readme README.md --module commonsjs --target es6 --theme default --exclude \"**/*+(index|.spec|.e2e).ts\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nherault/component-system.git"
+  },
+  "keywords": [
+    "library",
+    "typescript",
+    "jest",
+    "jasmine",
+    "starter"
+  ],
+  "author": "Nicolas Herault <nayran@free.fr> (http://github.com/nherault)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nherault/component-system/issues"
+  },
+  "homepage": "https://github.com/nherault/component-system#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/core-js": "^2.5.0",
+    "@types/jasmine": "^2.8.9",
+    "@types/jest": "^23.3.13",
+    "@types/node": "^10.12.2",
+    "benchmark": "^2.1.4",
+    "eslint": "^5.13.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.0.0",
+    "shx": "^0.3.2",
+    "ts-jest": "^23.10.5",
+    "ts-loader": "^4.4.2",
+    "tslint": "^5.7.0",
+    "typedoc": "^0.14.2",
+    "typescript": "^3.1.6",
+    "webpack": "^4.24.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
