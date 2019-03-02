@@ -57,6 +57,8 @@ export class ComponentSystemDefault implements ComponentSystem {
         return this;
     }
 
+    // TODO:
+    // - Inits Data before or after initialize?
     public addComponentToEntity(entity: any, componentType: string, inits?: any): ComponentSystem {
         const componentDescription = this.components[componentType];
         if (componentDescription) {
@@ -101,6 +103,8 @@ export class ComponentSystemDefault implements ComponentSystem {
         return this;
     }
 
+    // TODO:
+    // - Change event to: { componentType, type, payload }?
     public updateEntityComponents(entity: any, elapsedTime?: number, actionsDispatcher?: ActionsDispatcher): ComponentSystem {
         if (entity[this.componentsPropertyName]) {
             entity[this.componentsPropertyName].forEach((componentData: ComponentData) => {
@@ -112,6 +116,10 @@ export class ComponentSystemDefault implements ComponentSystem {
                             .update({entity, elapsedTime, componentData: componentData.data, actionsDispatcher});
                         if (eventPayload) {
                             this.addEvent({type: componentData.type, payload: eventPayload});
+                        }
+                        if (component.componentHandler.isOver
+                            && component.componentHandler.isOver({entity, componentData: componentData.data})) {
+                            this.removeComponentFromEntity(entity, component.componentHandler.type);
                         }
                     }
                 }

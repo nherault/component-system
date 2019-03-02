@@ -4,6 +4,7 @@ export interface ComponentHandler<T = any> {
     inits?: T;
     update: UpdateFn<T>;
     initialize?: InitializeFn<T>;
+    isOver?: (params: { entity: any, componentData: T}) => boolean;
 }
 
 export type InitializeFn<T> = (params: {entity: any, inits?: T}) => void;
