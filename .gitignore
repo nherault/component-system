@@ -1,5 +1,10 @@
 # Folders
 # dist
+_bundles
+lib
+lib-es6
+
+# dev
 coverage
 doc
 node_modules
